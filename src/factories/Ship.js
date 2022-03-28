@@ -1,8 +1,8 @@
 class Ship {
-    constructor(length, name) {
-        this.length = length;
+    constructor(name, position) {
         this.name = name;
-        this.position = [];
+        this.position = position;
+        this.length = this.position.length;
         this.hits = [];
     };
 
