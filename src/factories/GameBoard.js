@@ -10,6 +10,6 @@ class GameBoard {
         const ship = new Ship(name, position);
         this.shipArray.push(ship);
     };
-}
+};
 
 export default GameBoard;
