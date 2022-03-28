@@ -1,4 +1,3 @@
-import { expect, test } from "@jest/globals";
 import GameBoard from "../factories/GameBoard";
 
 test('Place ship', () => {
