@@ -1,3 +1,4 @@
+import { expect, test } from "@jest/globals";
 import GameBoard from "../factories/GameBoard";
 
 test('Place ship', () => {
@@ -49,4 +50,23 @@ test('Place multiple ships', () => {
             length: 2,
             hits: [],
         }]);
+});
+
+test('Receive an attack that hits one of your ships', () => {
+    const board = new GameBoard();
+    board.placeShip('Cruiser', ['A1', 'A2', 'A3']);
+    board.receiveAttack('A1');
+    expect(board.hits).toEqual(['A1']);
+});
+
+test('Check if all ships have been sunk', () => {
+    const board = new GameBoard();
+    board.placeShip('Cruiser', ['A1', 'A2', 'A3']);
+    board.placeShip('Stealth', ['B1', 'B2']);
+    board.receiveAttack('A1');
+    board.receiveAttack('A2');
+    board.receiveAttack('A3');
+    board.receiveAttack('B1');
+    board.receiveAttack('B2');
+    expect(board.checkForLoss()).toBeTruthy();
 });
