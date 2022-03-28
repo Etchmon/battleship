@@ -70,3 +70,14 @@ test('Check if all ships have been sunk', () => {
     board.receiveAttack('B2');
     expect(board.checkForLoss()).toBeTruthy();
 });
+
+test('Check if all ships have not been sunk', () => {
+    const board = new GameBoard();
+    board.placeShip('Cruiser', ['A1', 'A2', 'A3']);
+    board.placeShip('Stealth', ['B1', 'B2']);
+    board.receiveAttack('A1');
+    board.receiveAttack('A2');
+    board.receiveAttack('A3');
+    board.receiveAttack('B1');
+    expect(board.checkForLoss()).toBeFalsy();
+});
