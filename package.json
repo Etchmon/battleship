@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "BattleShip browser game",
   "main": "app.js",
+  "jest": {
+    "verbose": false
+  },
   "scripts": {
     "test": "jest"
   },

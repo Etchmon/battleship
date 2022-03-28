@@ -1,9 +1,28 @@
-// import { test } from "@jest/globals";
 import Ship from "../factories/Ship";
 
-const ship = new Ship(5, "BattleShip");
-
 test('Ship gets hit', () => {
+    const ship = new Ship(5, "BattleShip");
     ship.hit();
-    expect(ship.hits).toStrictEqual(['hit']);
-})
+    ship.hit();
+    expect(ship.hits).toStrictEqual(['hit', 'hit']);
+});
+
+test('Ship gets sunk', () => {
+    const ship = new Ship(5, "BattleShip");
+    ship.hit();
+    ship.hit();
+    ship.hit();
+    ship.hit();
+    ship.hit();
+    expect(ship.isSunk()).toBeTruthy();
+});
+
+test('Ship is not sunk', () => {
+    const ship = new Ship(5, "BattleShip");
+    ship.hit();
+    ship.hit();
+    ship.hit();
+    ship.hit();
+    expect(ship.isSunk()).toBeFalsy();
+});
+
