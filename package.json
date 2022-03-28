@@ -1,0 +1,23 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "BattleShip browser game",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Etchmon/battleship.git"
+  },
+  "author": "James Etchells",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Etchmon/battleship/issues"
+  },
+  "homepage": "https://github.com/Etchmon/battleship#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "jest": "^27.5.1"
+  }
+}
