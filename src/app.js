@@ -1,5 +1,8 @@
+import '../styles/reset.css';
+import '../styles/style.css';
+import _ from 'lodash';
 
-
+import board from "./components/board";
 // -------------------BattleShip----------------------
 // make 5 ships using ship factory of all different lengths
 // player drags ship and places them on map.
@@ -13,6 +16,15 @@
 // check if the ship is sunk with the issunk method
 // check if all ships on gameboard have been sunk
 // If there is no match, mark the position on gameboard as a miss and make tile innactive
-const BattleShip = (() => {
 
+const BattleShip = (() => {
+    const initiateDOM = (() => {
+        const content = document.createElement('section');
+        content.setAttribute('id', 'content');
+        content.innerHTML = _.join();
+
+        content.appendChild(board());
+
+        document.body.appendChild(content);
+    })();
 })();
