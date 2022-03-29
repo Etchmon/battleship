@@ -1,3 +1,5 @@
+
+
 // -------------------BattleShip----------------------
 // make 5 ships using ship factory of all different lengths
 // player drags ship and places them on map.
@@ -11,3 +13,6 @@
 // check if the ship is sunk with the issunk method
 // check if all ships on gameboard have been sunk
 // If there is no match, mark the position on gameboard as a miss and make tile innactive
+const BattleShip = (() => {
+
+})();
