@@ -34,14 +34,15 @@ const BattleShip = (() => {
         document.body.appendChild(content);
     })();
 
-    const gameStart = () => {
+    const gameStart = (() => {
         const player = new Player();
         const computer = new Computer();
 
         computer.board.placeShip('Cruiser', ['B1', 'B2', 'B3']);
         computer.board.placeShip('Carrier', ['A1', 'A2', 'A3', 'A4', 'A5']);
 
-        player.board.placeShip('Cruiser', ['B1', 'B2', 'B3']);
+        player.board.placeShip('Cruiser', ['B1', 'B2', 'B3'], 'player');
         player.board.placeShip('Carrier', ['A1', 'A2', 'A3', 'A4', 'A5']);
-    };
+    })();
+
 })();

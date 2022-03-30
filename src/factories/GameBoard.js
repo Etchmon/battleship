@@ -1,7 +1,8 @@
 import Ship from "./Ship";
 
 class GameBoard {
-    constructor() {
+    constructor(player) {
+        this.player = player;
         this.shipArray = [];
         this.board = [];
         this.hits = [];
@@ -11,6 +12,7 @@ class GameBoard {
     placeShip(name, position) {
         const ship = new Ship(name, position);
         this.shipArray.push(ship);
+        this.updateDisplay();
     };
 
     receiveAttack(attack) {
@@ -29,8 +31,18 @@ class GameBoard {
             return true;
         } else {
             return false;
-        }
-    }
+        };
+    };
+
+    updateDisplay() {
+        const grid = document.querySelector(`.${this.player}`);
+        this.shipArray.forEach(ship => {
+            ship.position.forEach(pos => {
+                const tile = grid.querySelector(`.${pos}`);
+                tile.classList.add('ship');
+            });
+        });
+    };
 };
 
 export default GameBoard;

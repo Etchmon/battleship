@@ -2,7 +2,7 @@ class Ship {
     constructor(name, position) {
         this.name = name;
         this.position = position;
-        this.length = this.position.length;
+        this.length = position.length;
         this.hits = [];
     };
 

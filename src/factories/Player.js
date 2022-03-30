@@ -1,8 +1,8 @@
-import GameBoard from "./GameBoard"
+import GameBoard from "./GameBoard";
 
 class Player {
     constructor() {
-        this.board = new GameBoard;
+        this.board = new GameBoard('player');
     };
 
     attack(attack, board) {
@@ -12,7 +12,7 @@ class Player {
 
 class Computer {
     constructor() {
-        this.board = new GameBoard;
+        this.board = new GameBoard('computer');
     };
 
     attack(attack, board) {

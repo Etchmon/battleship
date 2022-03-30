@@ -49,3 +49,8 @@ html {
   background-color: rgb(62, 195, 62);
   transition: all 0.5s;
 }
+
+.ship {
+  background-color: blue;
+  transition: all 0.5s;
+}
