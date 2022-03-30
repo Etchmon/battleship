@@ -1,6 +1,6 @@
-const board = () => {
+const board = (name) => {
     const element = document.createElement('div');
-    element.className = 'board';
+    element.className = `${name} board`;
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
     for (let i = 0; i < 10; i++) {

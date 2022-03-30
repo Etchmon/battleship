@@ -2,7 +2,12 @@ import '../styles/reset.css';
 import '../styles/style.css';
 import _ from 'lodash';
 
-import board from "./components/board";
+import header from './components/header';
+import main from './components/main';
+
+import { Computer, Player } from './factories/Player';
+import GameBoard from './factories/GameBoard';
+import Ship from './factories/Ship';
 // -------------------BattleShip----------------------
 // make 5 ships using ship factory of all different lengths
 // player drags ship and places them on map.
@@ -23,8 +28,20 @@ const BattleShip = (() => {
         content.setAttribute('id', 'content');
         content.innerHTML = _.join();
 
-        content.appendChild(board());
+        content.appendChild(header());
+        content.appendChild(main());
 
         document.body.appendChild(content);
     })();
+
+    const gameStart = () => {
+        const player = new Player();
+        const computer = new Computer();
+
+        computer.board.placeShip('Cruiser', ['B1', 'B2', 'B3']);
+        computer.board.placeShip('Carrier', ['A1', 'A2', 'A3', 'A4', 'A5']);
+
+        player.board.placeShip('Cruiser', ['B1', 'B2', 'B3']);
+        player.board.placeShip('Carrier', ['A1', 'A2', 'A3', 'A4', 'A5']);
+    };
 })();

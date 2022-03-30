@@ -5,8 +5,8 @@ const main = () => {
 
     element.setAttribute('class', 'main');
 
-    element.appendChild(board());
-    element.appendChild(board());
+    element.appendChild(board('player'));
+    element.appendChild(board('computer'));
 
     return element;
 };
