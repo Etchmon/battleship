@@ -16,14 +16,20 @@ class GameBoard {
     };
 
     receiveAttack(attack) {
+        const arr = [];
         this.shipArray.forEach(ship => {
             if (ship.position.includes(attack)) {
+                arr.push(attack);
                 ship.hit();
                 this.hits.push(attack);
-            } else {
-                this.misses.push(attack);
             };
         });
+
+        if (arr.length === 0) {
+            this.misses.push(attack);
+        };
+
+        this.updateDisplay();
     };
 
     checkForLoss() {
@@ -42,6 +48,17 @@ class GameBoard {
                 tile.classList.add('ship');
             });
         });
+        this.hits.forEach(hit => {
+            const tile = grid.querySelector(`.${hit}`);
+            tile.classList.add('hit');
+        });
+        console.log(this.misses);
+        this.misses.forEach(miss => {
+
+            const tile = grid.querySelector(`.${miss}`);
+            tile.classList.add('miss');
+        });
+
     };
 };
 

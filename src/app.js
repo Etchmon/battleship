@@ -43,6 +43,11 @@ const BattleShip = (() => {
 
         player.board.placeShip('Cruiser', ['B1', 'B2', 'B3'], 'player');
         player.board.placeShip('Carrier', ['A1', 'A2', 'A3', 'A4', 'A5']);
+
+        player.board.receiveAttack('A1');
+        player.board.receiveAttack('A0');
+        player.board.receiveAttack('A2');
+        player.board.receiveAttack('F2');
     })();
 
 })();

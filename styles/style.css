@@ -43,6 +43,7 @@ html {
 .tile {
   border: 1px solid black;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 .tile:hover {
@@ -52,5 +53,12 @@ html {
 
 .ship {
   background-color: blue;
-  transition: all 0.5s;
+}
+
+.hit {
+  background-color: red;
+}
+
+.miss {
+  background-color: black;
 }
