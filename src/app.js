@@ -25,6 +25,7 @@ import Ship from './factories/Ship';
 const BattleShip = (() => {
     const initiateDOM = (() => {
         const content = document.createElement('section');
+
         content.setAttribute('id', 'content');
         content.innerHTML = _.join();
 
@@ -37,6 +38,13 @@ const BattleShip = (() => {
     const gameStart = (() => {
         const player = new Player();
         const computer = new Computer();
+        const cGrid = document.querySelector('.computer');
+        const tiles = cGrid.querySelectorAll('.tile');
+        console.log(cGrid, tiles);
+
+        tiles.forEach(tile => {
+            tile.onclick = () => player.attack(tile.classList[0], computer.board);
+        });
 
         computer.board.placeShip('Cruiser', ['B1', 'B2', 'B3']);
         computer.board.placeShip('Carrier', ['A1', 'A2', 'A3', 'A4', 'A5']);
@@ -47,7 +55,7 @@ const BattleShip = (() => {
         player.board.receiveAttack('A1');
         player.board.receiveAttack('A0');
         player.board.receiveAttack('A2');
-        player.board.receiveAttack('F2');
+        player.attack('F1', computer.board);
     })();
 
 })();

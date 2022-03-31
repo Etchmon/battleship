@@ -52,7 +52,6 @@ class GameBoard {
             const tile = grid.querySelector(`.${hit}`);
             tile.classList.add('hit');
         });
-        console.log(this.misses);
         this.misses.forEach(miss => {
 
             const tile = grid.querySelector(`.${miss}`);
