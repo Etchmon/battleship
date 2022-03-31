@@ -20,17 +20,21 @@ class Computer {
         const tiles = pGrid.querySelectorAll('.tile');
         const arr = Array.from(tiles);
         const activeTiles = arr.filter(this.checkAvailable);
+        console.log(activeTiles);
         const random = this.chooseRandom(activeTiles);
         board.receiveAttack(random);
     };
 
     chooseRandom(arr) {
         return arr[Math.floor(Math.random() * arr.length)].classList[0];
-    }
+    };
 
     checkAvailable(tile) {
-        return tile.classList.length < 3;
-    }
+        const list = Array.from(tile.classList);
+        if (list.includes('ship') || tile.classList.length < 3) {
+            return tile;
+        };
+    };
 };
 
 export { Player, Computer };
