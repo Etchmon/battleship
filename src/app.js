@@ -43,7 +43,10 @@ const BattleShip = (() => {
         console.log(cGrid, tiles);
 
         tiles.forEach(tile => {
-            tile.onclick = () => player.attack(tile.classList[0], computer.board);
+            tile.onclick = () => {
+                player.attack(tile.classList[0], computer.board);
+                computer.attack(player.board);
+            };
         });
 
         computer.board.placeShip('Cruiser', ['B1', 'B2', 'B3']);
