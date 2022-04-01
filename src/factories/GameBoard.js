@@ -56,7 +56,6 @@ class GameBoard {
             const tile = grid.querySelector(`.${miss}`);
             tile.classList.add('miss');
         });
-
     };
 };
 

@@ -20,7 +20,6 @@ class Computer {
         const tiles = pGrid.querySelectorAll('.tile');
         const arr = Array.from(tiles);
         const activeTiles = arr.filter(this.checkAvailable);
-        console.log(activeTiles);
         const random = this.chooseRandom(activeTiles);
         board.receiveAttack(random);
     };

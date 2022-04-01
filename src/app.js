@@ -40,7 +40,6 @@ const BattleShip = (() => {
         const computer = new Computer();
         const cGrid = document.querySelector('.computer');
         const tiles = cGrid.querySelectorAll('.tile');
-        console.log(cGrid, tiles);
 
         tiles.forEach(tile => {
             tile.onclick = () => {
