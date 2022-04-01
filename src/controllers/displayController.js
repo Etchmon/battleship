@@ -15,7 +15,22 @@ const displayController = (() => {
         document.body.appendChild(content);
     };
 
-    return { createDom };
+    const drag = (ev) => {
+        console.log(ev);
+    };
+
+    function allowDrop(e) {
+        e.preventDefault();
+        // console.log(e.srcElement.className.split(' ')[0]);
+        console.log(e);
+    };
+
+    const drop = () => {
+        const pGrid = document.querySelector('player');
+        console.log(pGrid.querySelector('.tile'));
+    };
+
+    return { createDom, drag, drop, allowDrop };
 })();
 
 export default displayController;
