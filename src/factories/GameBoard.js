@@ -4,13 +4,18 @@ class GameBoard {
     constructor(player) {
         this.player = player;
         this.shipArray = [];
-        this.board = [];
+        this.fleet = {
+            stealth: new Ship('Stealth', 2),
+            cruiser: new Ship('Cruiser', 3),
+            submarine: new Ship('Submarine', 3),
+            destroyer: new Ship('Destroyer', 4),
+            carrier: new Ship('Carrier', 5),
+        }
         this.hits = [];
         this.misses = [];
     };
 
-    placeShip(name, position) {
-        const ship = new Ship(name, position);
+    placeShip(ship) {
         this.shipArray.push(ship);
         this.updateDisplay();
     };
@@ -57,6 +62,7 @@ class GameBoard {
             tile.classList.add('miss');
         });
     };
+
 };
 
 export default GameBoard;

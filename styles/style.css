@@ -21,9 +21,16 @@ html {
 }
 
 .main {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 10vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ship-yard {
+  font-size: 1.5rem;
+}
+
+.ship-yard h1 {
+  white-space: nowrap;
 }
 
 .board {
@@ -31,7 +38,6 @@ html {
   grid-template-rows: repeat(10, 1fr);
   height: 20rem;
   width: 20rem;
-  margin: 0 auto;
   border: 1px solid black;
 }
 
@@ -49,6 +55,20 @@ html {
 .tile:hover {
   background-color: rgb(62, 195, 62);
   transition: all 0.5s;
+}
+
+#ship {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 2rem;
+  width: 6rem;
+  background-color: blue;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.cell {
+  border: 1px solid black;
 }
 
 .ship {
