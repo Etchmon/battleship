@@ -4,6 +4,7 @@ const gameController = (() => {
     let currentPlayer;
     let left;
     let right
+    let domShip;
     const initGame = () => {
         const player = new Player();
         const computer = new Computer();
@@ -26,7 +27,25 @@ const gameController = (() => {
         let pos = ev.dataset.cell;
         right = (length - 1) - pos;
         left = (length - 1) - right;
-        console.log(right, left)
+        switch (ev.id) {
+            case ('stealth'):
+                domShip = currentPlayer.board.fleet.stealth;
+                break;
+            case ('cruiser'):
+                domShip = currentPlayer.board.fleet.cruiser;
+                break;
+            case ('submarine'):
+                domShip = currentPlayer.board.fleet.submarine;
+                break;
+            case ('destroyer'):
+                domShip = currentPlayer.board.fleet.destroyer;
+                break;
+            case ('carrier'):
+                domShip = currentPlayer.board.fleet.carrier;
+                break;
+        };
+        console.log(domShip);
+        console.log(right, left);
     };
 
     function allowDrop(e) {
@@ -34,6 +53,7 @@ const gameController = (() => {
     };
 
     const drop = (e) => {
+        console.log(e);
         console.log(e.srcElement.className.split(' ')[0]);
         const pos = e.srcElement.className.split(' ')[0];
         const posLet = pos.split('')[0];
@@ -54,10 +74,9 @@ const gameController = (() => {
             posArr.push(posLet + coord);
         };
         console.log(posArr);
-
-        currentPlayer.board.fleet.cruiser.position = posArr;
-        currentPlayer.board.placeShip(currentPlayer.board.fleet.cruiser);
-        console.log(currentPlayer.board.fleet.cruiser)
+        console.log(currentPlayer.board.fleet)
+        domShip.position = posArr;
+        currentPlayer.board.placeShip(domShip);
     };
 
     return { initGame, drop, drag, allowDrop }
