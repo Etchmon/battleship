@@ -27,6 +27,10 @@ html {
 
 .ship-yard {
   font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .ship-yard h1 {
@@ -57,18 +61,21 @@ html {
   transition: all 0.5s;
 }
 
-#ship {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 2rem;
-  width: 6rem;
-  background-color: blue;
-  cursor: pointer;
-  border: 1px solid black;
+#stealth,
+#cruiser,
+#submarine,
+#destroyer,
+#carrier {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
 }
 
 .cell {
   border: 1px solid black;
+  height: 2rem;
+  width: 2rem;
+  background-color: blue;
 }
 
 .ship {

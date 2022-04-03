@@ -38,7 +38,7 @@ const gameController = (() => {
         const posNum = pos.split('')[1];
         const left = 1;
         const right = 1;
-        const posArr = [pos]
+        const posArr = [pos];
 
         for (let i = left; i > 0; i--) {
             if (left === 0) return;

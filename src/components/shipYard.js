@@ -1,31 +1,64 @@
 import gameController from "../controllers/gameController";
 const shipYard = () => {
     const element = document.createElement('div');
-    const title = document.createElement('h1');
-    const ship = document.createElement('div');
-
     element.setAttribute('class', 'ship-yard');
-    Object.assign(ship, {
-        id: 'ship',
-        draggable: 'true',
-        ondragstart: () => gameController.drag(ship)
-    });
+    const title = document.createElement('h1');
     title.innerHTML = 'Ship Yard';
-
-    for (let i = 0; i < 3; i++) {
-        const cell = document.createElement('div');
-        Object.assign(cell, {
-            className: i + ' cell',
-            onmousedown: () => cell.parentElement.dataset.cell = cell.className.split(' ')[0]
-        });
-
-        ship.appendChild(cell);
-    };
-
-
+    const fleet = [
+        {
+            name: 'stealth',
+            length: '2'
+        },
+        {
+            name: 'cruiser',
+            length: '3'
+        },
+        {
+            name: 'submarine',
+            length: '3'
+        },
+        {
+            name: 'destroyer',
+            length: '4'
+        },
+        {
+            name: 'carrier',
+            length: '5'
+        },
+    ];
 
     element.appendChild(title);
-    element.appendChild(ship);
+
+    fleet.forEach(ship => {
+        const shipDiv = document.createElement('div');
+
+        Object.assign(shipDiv, {
+            id: ship.name,
+            draggable: 'true',
+            ondragstart: () => gameController.drag(shipDiv)
+        });
+
+        for (let i = 0; i < ship.length; i++) {
+            const cell = document.createElement('div');
+            Object.assign(cell, {
+                className: i + ' cell',
+                onmousedown: () => cell.parentElement.dataset.cell = cell.className.split(' ')[0]
+            });
+
+            shipDiv.appendChild(cell);
+        };
+
+        element.appendChild(shipDiv);
+
+    });
+
+
+
+
+
+
+
+
 
     return element;
 };
