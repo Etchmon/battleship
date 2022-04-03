@@ -53,7 +53,6 @@ const gameController = (() => {
     };
 
     const drop = (e) => {
-        console.log(e);
         console.log(e.srcElement.className.split(' ')[0]);
         const pos = e.srcElement.className.split(' ')[0];
         const posLet = pos.split('')[0];
@@ -74,9 +73,12 @@ const gameController = (() => {
             posArr.push(posLet + coord);
         };
         console.log(posArr);
-        console.log(currentPlayer.board.fleet)
+        console.log(document.querySelector(`#${domShip.name}`))
         domShip.position = posArr;
         currentPlayer.board.placeShip(domShip);
+        const shipyard = document.querySelector('.ship-yard');
+        shipyard.removeChild(document.querySelector(`#${domShip.name}`))
+
     };
 
     return { initGame, drop, drag, allowDrop }

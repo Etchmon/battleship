@@ -5,11 +5,11 @@ class GameBoard {
         this.player = player;
         this.shipArray = [];
         this.fleet = {
-            stealth: new Ship('Stealth', 2),
-            cruiser: new Ship('Cruiser', 3),
-            submarine: new Ship('Submarine', 3),
-            destroyer: new Ship('Destroyer', 4),
-            carrier: new Ship('Carrier', 5),
+            stealth: new Ship('stealth', 2),
+            cruiser: new Ship('cruiser', 3),
+            submarine: new Ship('submarine', 3),
+            destroyer: new Ship('destroyer', 4),
+            carrier: new Ship('carrier', 5),
         }
         this.hits = [];
         this.misses = [];
