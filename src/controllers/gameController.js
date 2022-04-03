@@ -2,6 +2,8 @@ import { Player, Computer } from '../factories/Player';
 
 const gameController = (() => {
     let currentPlayer;
+    let left;
+    let right
     const initGame = () => {
         const player = new Player();
         const computer = new Computer();
@@ -22,8 +24,8 @@ const gameController = (() => {
         console.log(ev.childNodes.length);
         let length = ev.childNodes.length;
         let pos = ev.dataset.cell;
-        let right = (length - 1) - pos;
-        let left = (length - 1) - right;
+        right = (length - 1) - pos;
+        left = (length - 1) - right;
         console.log(right, left)
     };
 
@@ -36,8 +38,6 @@ const gameController = (() => {
         const pos = e.srcElement.className.split(' ')[0];
         const posLet = pos.split('')[0];
         const posNum = pos.split('')[1];
-        const left = 1;
-        const right = 1;
         const posArr = [pos];
 
         for (let i = left; i > 0; i--) {
