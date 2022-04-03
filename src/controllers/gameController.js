@@ -15,9 +15,6 @@ const gameController = (() => {
             };
         });
 
-        player.board.fleet.cruiser.position = ['B1', 'B2', 'B3'];
-        player.board.placeShip(player.board.fleet.cruiser);
-
         currentPlayer = player;
     };
 
@@ -32,7 +29,6 @@ const gameController = (() => {
 
     function allowDrop(e) {
         e.preventDefault();
-        // console.log(e.srcElement.className.split(' ')[0]);
     };
 
     const drop = (e) => {
@@ -45,16 +41,23 @@ const gameController = (() => {
         const posArr = [pos]
 
         for (let i = left; i > 0; i--) {
-            posArr.push(posLet + (posNum - i));
+            if (left === 0) return;
+            const coord = posNum - i;
+            if (coord < 0 || coord > 9) return;
+            posArr.push(posLet + coord);
         };
 
         for (let i = right; i > 0; i--) {
-            posArr.push(posLet + (Number(posNum) + i));
+            if (right === 0) return;
+            const coord = Number(posNum) + i;
+            if (coord < 0 || coord > 9) return;
+            posArr.push(posLet + coord);
         };
         console.log(posArr);
 
         currentPlayer.board.fleet.cruiser.position = posArr;
         currentPlayer.board.placeShip(currentPlayer.board.fleet.cruiser);
+        console.log(currentPlayer.board.fleet.cruiser)
     };
 
     return { initGame, drop, drag, allowDrop }
