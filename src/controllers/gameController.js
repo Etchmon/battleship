@@ -2,6 +2,7 @@ import { Player, Computer } from '../factories/Player';
 
 const gameController = (() => {
     let currentPlayer;
+    let currentCom;
     let left;
     let right;
     let domShip;
@@ -19,7 +20,10 @@ const gameController = (() => {
             };
         });
 
+        cGrid.classList.add('hide');
+
         currentPlayer = player;
+        currentCom = computer;
     };
 
     const drag = (ev) => {
@@ -60,12 +64,9 @@ const gameController = (() => {
         const fleetArr = Object.entries(currentPlayer.board.fleet);
         const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
         const classList = shipHtml.className;
-        console.log(classList.includes('rotate'));
+
         if (classList.includes('rotate')) {
-            console.log('rotated')
             const letterIndex = letters.indexOf(posLet);
-            // apply left to top, bottom to right variables
-            // similiar for loops, but instead of numbers use indexes in letters array
             for (let i = left; i > 0; i--) {
                 if (left === 0) return;
                 const coord = letters[letterIndex - i];
@@ -95,45 +96,6 @@ const gameController = (() => {
             };
         };
 
-        // switch (classList) {
-        //     case (classList.includes('rotate') === true):
-        //         // find the position of posLet in letter array
-        //         console.log('rotated')
-        //         const letterIndex = letters.indexOf(posLet);
-        //         // apply left to top, bottom to right variables
-        //         // similiar for loops, but instead of numbers use indexes in letters array
-        //         for (let i = left; i > 0; i--) {
-        //             if (left === 0) return;
-        //             const coord = letters[letterIndex - i];
-        //             if (coord == undefined) return;
-        //             posArr.push(coord + posNum);
-        //         };
-
-        //         for (let i = right; i > 0; i--) {
-        //             if (right === 0) return;
-        //             const coord = letters[Number(posNum) + i];
-        //             if (coord == undefined) return;
-        //             posArr.push(coord + posNum);
-        //         };
-        //         break;
-        //     default:
-        //         for (let i = left; i > 0; i--) {
-        //             if (left === 0) return;
-        //             const coord = posNum - i;
-        //             if (coord < 0 || coord > 9) return;
-        //             posArr.push(posLet + coord);
-        //         };
-
-        //         for (let i = right; i > 0; i--) {
-        //             if (right === 0) return;
-        //             const coord = Number(posNum) + i;
-        //             if (coord < 0 || coord > 9) return;
-        //             posArr.push(posLet + coord);
-        //         };
-        //         break;
-        // };
-
-
         domShip.position = posArr;
         currentPlayer.board.placeShip(domShip);
 
@@ -142,6 +104,8 @@ const gameController = (() => {
         console.log(currentPlayer.board.fleet);
         if (fleetArr.every(checkAllPlaced)) {
             console.log('Start Game');
+            document.querySelector('.computer').classList.remove('hide');
+            currentCom.board.placeAllShips();
         };
     };
 
