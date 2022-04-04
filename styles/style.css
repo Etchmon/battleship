@@ -71,6 +71,10 @@ html {
   margin: 0.5rem 0;
 }
 
+.rotate {
+  flex-direction: column;
+}
+
 .cell {
   border: 1px solid black;
   height: 2rem;

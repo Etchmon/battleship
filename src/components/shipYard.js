@@ -1,9 +1,17 @@
 import gameController from "../controllers/gameController";
+import displayController from "../controllers/displayController";
 const shipYard = () => {
     const element = document.createElement('div');
     element.setAttribute('class', 'ship-yard');
     const title = document.createElement('h1');
+    const rotBtn = document.createElement('span');
     title.innerHTML = 'Ship Yard';
+
+    Object.assign(rotBtn, {
+        innerHTML: 'Rotate',
+        onclick: displayController.rotateShips
+    });
+
     const fleet = [
         {
             name: 'stealth',
@@ -28,6 +36,7 @@ const shipYard = () => {
     ];
 
     element.appendChild(title);
+    element.appendChild(rotBtn);
 
     fleet.forEach(ship => {
         const shipDiv = document.createElement('div');
@@ -35,7 +44,8 @@ const shipYard = () => {
         Object.assign(shipDiv, {
             id: ship.name,
             draggable: 'true',
-            ondragstart: () => gameController.drag(shipDiv)
+            ondragstart: () => gameController.drag(shipDiv),
+            className: 'yard-ship'
         });
 
         for (let i = 0; i < ship.length; i++) {
