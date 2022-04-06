@@ -9,7 +9,10 @@ html {
 }
 
 #content {
+  display: grid;
   min-height: 100vh;
+  background-color: rgb(0 0 255/ 90%);
+  color: whitesmoke;
 }
 
 .header {
@@ -17,47 +20,68 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem;
+  text-transform: uppercase;
   font-size: 6rem;
   text-align: center;
   letter-spacing: 5px;
   font-weight: 800;
+  gap: 2rem;
 }
 
 .header button {
   font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(0 0 0 / 50%);
+  color: whitesmoke;
+  padding: 1rem 3rem;
 }
 
 .status {
   font-size: 2rem;
   font-style: italic;
-  border: 1px solid blue;
+  border: 1px solid whitesmoke;
   padding: 1rem 5rem;
 }
 
 .main {
   display: flex;
   justify-content: space-evenly;
+  background-color: rgb(0 0 0/ 50%);
+  height: 100%;
+  padding: 5rem;
 }
 
 .ship-yard {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
+.ship-yard span {
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
 .ship-yard h1 {
   white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  margin: 1rem 0;
+  text-decoration: underline;
 }
 
 .board {
   display: grid;
   grid-template-rows: repeat(10, 1fr);
-  height: 20rem;
-  width: 20rem;
-  border: 1px solid black;
+  height: 30rem;
+  width: 30rem;
+  border: 1px solid whitesmoke;
 }
 
 .row {
@@ -66,7 +90,7 @@ html {
 }
 
 .tile {
-  border: 1px solid black;
+  border: 1px solid whitesmoke;
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -96,9 +120,10 @@ html {
 
 .cell {
   border: 1px solid black;
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
   background-color: blue;
+  cursor: grab;
 }
 
 .ship {

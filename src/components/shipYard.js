@@ -35,8 +35,8 @@ const shipYard = () => {
         },
     ];
 
-    element.appendChild(title);
     element.appendChild(rotBtn);
+    element.appendChild(title);
 
     fleet.forEach(ship => {
         const shipDiv = document.createElement('div');

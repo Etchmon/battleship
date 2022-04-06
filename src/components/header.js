@@ -13,7 +13,7 @@ const header = () => {
 
     Object.assign(element, {
         className: 'header',
-        innerHTML: 'BattleShip'
+        innerHTML: 'BattleShip',
     });
 
     element.appendChild(status);
