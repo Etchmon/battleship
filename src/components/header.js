@@ -7,7 +7,7 @@ const header = () => {
     status.setAttribute('class', 'status');
 
     Object.assign(btn, {
-        innerHTML: 'restart',
+        innerHTML: 'Restart',
         onclick: gameController.restart,
     });
 

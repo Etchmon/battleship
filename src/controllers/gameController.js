@@ -23,6 +23,7 @@ const gameController = (() => {
         });
 
         displayController.setStatus('Place your ships!');
+        document.querySelector('header').querySelector('button').innerHTML = 'Restart';
 
         cGrid.classList.add('hide');
 
