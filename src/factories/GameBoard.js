@@ -1,4 +1,5 @@
 import Ship from "./Ship";
+import displayController from "../controllers/displayController";
 
 class GameBoard {
     constructor(player) {
@@ -45,7 +46,6 @@ class GameBoard {
             let randomSpace = openSpaces[Math.floor(Math.random() * openSpaces.length)];
             const letter = randomSpace.split('')[0];
             const num = randomSpace.split('')[1];
-            console.log(randomSpace);
             ship[1].position.push(randomSpace);
             for (let i = ship[1].length - 1; i > 0; i--) {
                 let coord = Number(num) + i;
@@ -60,7 +60,6 @@ class GameBoard {
         });
 
         this.updateDisplay();
-        console.log(this.shipArray);
     };
 
     checkPlacement(coord, openSpaces) {
@@ -93,11 +92,19 @@ class GameBoard {
                 arr.push(attack);
                 ship.hit();
                 this.hits.push(attack);
+                if (ship.isSunk()) {
+                    displayController.setStatus(`${this.player}'s ${ship.name} has been sunk!`)
+                };
             };
         });
 
         if (arr.length === 0) {
             this.misses.push(attack);
+        };
+
+        if (this.checkForLoss()) {
+            displayController.setStatus(`${this.player} has won!`);
+            document.querySelector('header').querySelector('button').innerHTML = 'Play Again?';
         };
 
         this.updateDisplay();
@@ -127,13 +134,12 @@ class GameBoard {
         const grid = document.querySelector(`.${this.player}`);
         if (this.player === 'player') {
             this.shipArray.forEach(ship => {
-                console.log(ship);
                 ship.position.forEach(pos => {
                     const tile = grid.querySelector(`.${pos}`);
                     tile.classList.add('ship');
                 });
             });
-        }
+        };
 
         this.hits.forEach(hit => {
             const tile = grid.querySelector(`.${hit}`);

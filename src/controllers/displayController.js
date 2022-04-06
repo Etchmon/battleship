@@ -31,17 +31,23 @@ const displayController = (() => {
     const resetMain = () => {
         const content = document.querySelector('#content');
         const mainOld = document.querySelector('.main');
-        const cGrid = document.querySelector('.computer');
 
         content.removeChild(mainOld);
         content.appendChild(main());
-        cGrid.classList.add('.hide');
 
+        const cGrid = document.querySelector('.computer');
+        cGrid.classList.add('hide');
+    };
+
+    const setStatus = (status) => {
+        const element = document.querySelector('.status');
+
+        element.innerHTML = status;
     };
 
 
 
-    return { createDom, rotateShips, resetMain };
+    return { createDom, rotateShips, resetMain, setStatus };
 })();
 
 export default displayController;

@@ -18,8 +18,11 @@ const gameController = (() => {
             tile.onclick = () => {
                 player.attack(tile.classList[0], computer.board);
                 computer.attack(player.board);
+                tile.onclick = null;
             };
         });
+
+        displayController.setStatus('Place your ships!');
 
         cGrid.classList.add('hide');
 
@@ -112,7 +115,7 @@ const gameController = (() => {
 
         console.log(currentPlayer.board.fleet);
         if (fleetArr.every(checkAllPlaced)) {
-            console.log('Start Game');
+            displayController.setStatus('Commence battle! Find the enemy ships');
             document.querySelector('.computer').classList.remove('hide');
             currentCom.board.placeAllShips();
         };

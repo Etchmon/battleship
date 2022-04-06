@@ -30,8 +30,10 @@ class Computer {
 
     checkAvailable(tile) {
         const list = Array.from(tile.classList);
+        if (list.includes('hit')) return;
         if (list.includes('ship') || tile.classList.length < 3) {
             return tile;
+
         };
     };
 };

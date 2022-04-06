@@ -13,11 +13,26 @@ html {
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 4rem;
   font-size: 6rem;
   text-align: center;
   letter-spacing: 5px;
   font-weight: 800;
+}
+
+.header button {
+  font-size: 1.5rem;
+}
+
+.status {
+  font-size: 2rem;
+  font-style: italic;
+  border: 1px solid blue;
+  padding: 1rem 5rem;
 }
 
 .main {
