@@ -1,7 +1,6 @@
 import header from '../components/header';
 import main from '../components/main';
 import _ from 'lodash';
-import gameController from './gameController';
 
 const displayController = (() => {
     const createDom = () => {
@@ -29,9 +28,20 @@ const displayController = (() => {
         });
     };
 
+    const resetMain = () => {
+        const content = document.querySelector('#content');
+        const mainOld = document.querySelector('.main');
+        const cGrid = document.querySelector('.computer');
+
+        content.removeChild(mainOld);
+        content.appendChild(main());
+        cGrid.classList.add('.hide');
+
+    };
 
 
-    return { createDom, rotateShips };
+
+    return { createDom, rotateShips, resetMain };
 })();
 
 export default displayController;

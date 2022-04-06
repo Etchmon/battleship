@@ -15,6 +15,11 @@ class GameBoard {
         this.misses = [];
     };
 
+    resetShips() {
+        this.shipArray = [];
+        this.updateDisplay();
+    }
+
     placeShip(ship) {
         this.shipArray.push(ship);
         this.updateDisplay();
@@ -73,7 +78,7 @@ class GameBoard {
                     if (coord > 9) {
                         coord = num - (ship.length - i);
                     }
-                    this.checkPlacement(letter + coord)
+                    this.checkPlacement(letter + coord);
                     ship.position.push(letter + coord);
                 };
             };
@@ -107,6 +112,18 @@ class GameBoard {
     };
 
     updateDisplay() {
+        if (this.shipArray.length < 1) {
+            const tiles = Array.from(document.querySelectorAll('.tile'));
+            tiles.forEach(tile => {
+                if (tile.className.includes('ship') || tile.className.includes('hit') || tile.className.includes('miss')) {
+                    tile.classList.remove('ship');
+                    tile.classList.remove('hit');
+                    tile.classList.remove('miss');
+                };
+            });
+
+            return;
+        };
         const grid = document.querySelector(`.${this.player}`);
         if (this.player === 'player') {
             this.shipArray.forEach(ship => {

@@ -1,4 +1,5 @@
 import { Player, Computer } from '../factories/Player';
+import displayController from './displayController';
 
 const gameController = (() => {
     let currentPlayer;
@@ -24,6 +25,14 @@ const gameController = (() => {
 
         currentPlayer = player;
         currentCom = computer;
+    };
+
+    const restart = () => {
+        initGame();
+        currentCom.board.resetShips();
+        currentPlayer.board.resetShips();
+        console.log(currentPlayer.board)
+        displayController.resetMain();
     };
 
     const drag = (ev) => {
@@ -114,7 +123,7 @@ const gameController = (() => {
         return ship[1].position.length > 0;
     };
 
-    return { initGame, drop, drag, allowDrop }
+    return { initGame, drop, drag, allowDrop, restart }
 })();
 
 export default gameController;
